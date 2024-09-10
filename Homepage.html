@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Boost</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        header {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 15px;
+            margin-right: 15px;
+            color: #062573;
+        }
+        
+        h2 {
+            text-wrap: nowrap;
+        }
+        
+        .nav-items {
+            list-style: none;
+            display: flex;
+            min-width: 400px;
+            max-width: 400px;
+            align-items: center;
+            justify-content: space-around;
+            font-weight: 600;
+        }
+        
+        .top {
+            background-image: url(images/Rectangle\ 20.png);
+            height: 600px;
+            min-width: 600px;
+            width: 100%;
+            background-clip: cover;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tagline {
+            font-weight: 800;
+            font-size: 46px;
+            margin-left: 60px;
+            color: #062573;
+        }
+        
+        section {
+            display: flex;
+            justify-content: center;
+        }
+        
+        article {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        h1 {
+            color: #062573;
+            font-weight: 900;
+            font-size: 44px;
+        }
+    </style>
+    <header>
+        <h2><a href="homepage.html">Brain Boost</a></h2>
+
+        <ul class="nav-items">
+            <li><a href="Homepage.html">Home</a></li>
+            <li>Courses</li>
+            <li><a href="About us.html">About Us</a></li>
+            <li>Contact us</li>
+            <li>Login</li>
+        </ul>
+
+    </header>
+    <section>
+        <div class="top">
+            <P class="tagline">Be The Next Coder <br> With Us.</P>
+        </div>
+    </section>
+    <article>
+        <style>
+            .course-container {
+                background-color: aqua;
+                width: 95%;
+                padding: 15px;
+                display: grid;
+                grid-gap: 50px;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-auto-rows: auto;
+            }
+            
+            .course-card {
+                height: 300px;
+                width: 250px;
+                background-color: #d9d9d9;
+                display: flex;
+                flex-direction: column;
+                justify-self: center;
+                align-items: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+            
+            .course-title {
+                font-weight: 800;
+                font-size: 20px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                text-wrap: nowrap;
+                overflow: hidden;
+                color: #062573;
+                text-align: center;
+            }
+            
+            .card-btm {
+                display: flex;
+                justify-content: end;
+                margin-right: 8px;
+                margin-top: 10px;
+                height: 60px;
+                width: 220px;
+            }
+            
+            .enroll-btn {
+                height: 35px;
+                width: 100px;
+                color: white;
+                font-size: 16px;
+                background-color: #062573;
+            }
+        </style>
+        <h1>Courses</h1>
+        <div class="course-container">
+            <div class="course-card">
+                <div class="card-top">
+                    <img class="course-cover" src="images/Rectangle 7.png" height="200px" width="250px">
+                    <p class="course-title">Web Development</p>
+                </div>
+                <div class="card-btm">
+                    <a href="Course page.html">
+                        <button class="enroll-btn">Enroll</button>
+                    </a>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="card-top">
+                    <img class="course-cover" src="images/Rectangle 51.png" height="200px" width="250px">
+                    <p class="course-title">Python Development</p>
+                </div>
+                <div class="card-btm">
+                    <a href="Course page.html">
+                        <button class="enroll-btn">Enroll</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="card-top">
+                    <img class="course-cover" src="images/Rectangle 48.png" height="200px" width="250px">
+                    <p class="course-title">App Development</p>
+                </div>
+                <div class="card-btm">
+                    <a href="Course page.html">
+                        <button class="enroll-btn">Enroll</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="card-top">
+                    <img class="course-cover" src="images/Rectangle 7.png" height="200px" width="250px">
+                    <p class="course-title">web Development</p>
+                </div>
+                <div class="card-btm">
+                    <a href="Course page.html">
+                        <button class="enroll-btn">Enroll</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="card-top">
+                    <img class="course-cover" src="images/Rectangle 54.png" height="200px" width="250px">
+                    <p class="course-title">Game Development</p>
+                </div>
+                <div class="card-btm">
+                    <a href="Course page.html">
+                        <button class="enroll-btn">Enroll</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h1>Our Mentors</h1>
+        <style>
+            .mentor-container {
+                background-color: #062573;
+                width: 95%;
+                padding: 15px;
+                display: grid;
+                grid-gap: 50px;
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                grid-auto-rows: auto;
+            }
+            
+            .mentor-card {
+                width: 350px;
+                height: 350px;
+                background-color: #d9d9d9;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 50px;
+            }
+            
+            .mentor {
+                font-weight: 800;
+                font-size: 16px;
+                margin-top: 0px;
+            }
+        </style>
+        <div class="mentor-container">
+            <div class="mentor-card">
+                <img src="images/Rectangle 21.png" width="350px" height="280px">
+                <p class="course-title"> Web Development</p>
+                <p class="mentor">Bushra Jannat (Dept. of CSE-UIU)</p>
+            </div>
+            <div class="mentor-card">
+                <img src="images/Rectangle 21.png" width="350px" height="280px">
+                <p class="course-title"> Web Development</p>
+                <p class="mentor">Bushra Jannat (Dept. of CSE-UIU)</p>
+            </div>
+
+            <div class="mentor-card">
+                <img src="images/Rectangle 21.png" width="350px" height="280px">
+                <p class="course-title"> Web Development</p>
+                <p class="mentor">Bushra Jannat (Dept. of CSE-UIU)</p>
+            </div>
+        </div>
+        <h1>FAQ</h1>
+        <style>
+            .faq-container {
+                min-width: 500px;
+                width: 60%;
+                margin-bottom: 80px;
+            }
+            
+            .qus {
+                background-color: #d9d9d9;
+                width: 100%;
+                height: 50px;
+                padding-left: 20px;
+                padding-top: 20px;
+                margin-top: 4px;
+            }
+            
+            .ans {
+                background-color: #f5f5f5;
+                width: 100%;
+                height: 100px;
+                padding-left: 20px;
+                padding-top: 10px;
+            }
+            
+            .q {
+                font-size: 25px;
+                font-weight: 900;
+                margin-top: 0;
+            }
+            
+            .a {
+                margin-top: 2px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        </style>
+        <div class="faq-container">
+            <div class="faq">
+                <div class="qus">
+                    <P class="q">Question 1</P>
+                </div>
+                <div class="ans">
+                    <P class="a">Ans goes here....</P>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="qus">
+                    <P class="q">Question 2</P>
+                </div>
+
+            </div>
+            <div class="faq">
+                <div class="qus">
+                    <P class="q">Question 2</P>
+                </div>
+
+            </div>
+        </div>
+    </article>
+    <style>
+        footer {
+            background-color: #062573;
+            width: 100%;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        
+        .foot-container {
+            width: 95%;
+            height: 600px;
+            background-color: #062573;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .nav {
+            display: flex;
+        }
+        
+        .txt {
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .conclusion {
+            display: flex;
+            justify-content: center;
+            text-align: justify;
+            align-items: center;
+            width: 60%;
+        }
+        
+        .foot-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-card {
+            width: 400px;
+            height: 400px;
+            padding-left: 20px;
+            padding-top: 20px;
+        }
+        
+        .nav-head {
+            font-weight: 800;
+            font-size: 18px;
+        }
+        
+        .nav-item {
+            font-weight: 400;
+            font-size: 16px;
+            margin-left: 2px;
+            margin-top: 40px;
+        }
+    </style>
+    <footer>
+        <div class="foot-container">
+            <div class="nav">
+                <div class="nav-card">
+                    <p class="nav-head">Follow us on social media</p>
+                    <p class="nav-item">Facebook</p>
+                    <p class="nav-item">Twitter</p>
+                    <p class="nav-item">Instagram</p>
+                    <p class="nav-item">What'sapp</p>
+                </div>
+
+
+                <div class="nav-card">
+                    <p class="nav-head">Navigate to</p>
+                    <p class="nav-item">Home</p>
+                    <p class="nav-item">Courses</p>
+                    <p class="nav-item">About us</p>
+                    <p class="nav-item">Contac us</p>
+                </div>
+
+
+                <div class="nav-card">
+                    <p class="nav-head">Follow us on social media</p>
+                    <p class="nav-item">Facebook</p>
+                    <p class="nav-item">Twitter</p>
+                    <p class="nav-item">Instagram</p>
+                    <p class="nav-item">What'sapp</p>
+                </div>
+            </div>
+            <div class="conclusion">
+                <p class="txt">CodeKid Bangladesh leads in teaching coding to children with an engaging, interactive platform. Our expert instructors make learning fun through creative projects and problem-solving, building essential tech skills and confidence. We're
+                    dedicated to unlocking every child’s potential and fostering a passion for technology. Shape the future with us!</p>
+            </div>
+            <p class="txt">All rights are reserved @2024</p>
+        </div>
+    </footer>
+</body>
+
+</html>
