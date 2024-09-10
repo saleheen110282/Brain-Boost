@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('Background.jpeg'); /* Add your background image here */
+    background-size: cover; /* Ensures the background covers the entire page */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Fixes the background during scrolling */
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h2 {
+    color: #003399;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #003399;
+    font-weight: bold;
+}
+
+.payment-section {
+    width: 80%;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent background to show the image */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-section h1 {
+    font-size: 2rem;
+    color: #003399;
+    margin-bottom: 30px;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-form input, .payment-form textarea {
+    padding: 15px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+}
+
+.payment-form textarea {
+    resize: none;
+}
+
+.total-amount {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.total-amount span {
+    font-weight: bold;
+}
+
+.btn-submit {
+    padding: 15px 20px;
+    font-size: 1rem;
+    background-color: #003399;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #002080;
+}
