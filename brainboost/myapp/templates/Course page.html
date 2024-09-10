@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Page</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        header {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 15px;
+            margin-right: 15px;
+            color: #062573;
+        }
+        
+        h2 {
+            text-wrap: nowrap;
+        }
+        
+        .nav-items {
+            list-style: none;
+            display: flex;
+            min-width: 400px;
+            max-width: 400px;
+            align-items: center;
+            justify-content: space-around;
+            font-weight: 600;
+        }
+        
+        h1 {
+            color: #062573;
+            font-weight: 900;
+            font-size: 44px;
+            margin-left: 5%;
+        }
+    </style>
+    <header>
+        <h2><a href="homepage.html">Brain Boost</a></h2>
+
+        <ul class="nav-items">
+            <li><a href="Homepage.html">Home</a></li>
+            <li>Courses</li>
+            <li><a href="About us.html">About Us</a></li>
+            <li>Contact us</li>
+            <li>Login</li>
+        </ul>
+    </header>
+    <style>
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 600;
+            width: 100%;
+        }
+        
+        .course-outline {
+            height: 500px;
+            width: 30%;
+            background-color: #062573;
+        }
+        
+        .course-container {
+            height: 550px;
+            width: 70%;
+            background-color: white;
+            padding-left: 8%;
+        }
+        
+        .course-item {
+            width: 100%;
+            border: 1px solid white;
+        }
+        
+        .course-outline p {
+            color: white;
+            overflow: hidden;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+    </style>
+    <section>
+        <div class="course-outline">
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+            <div class="course-item">
+                <p>Quiz 1</p>
+            </div>
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+            <div class="course-item">
+                <p>Quiz 1</p>
+            </div>
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+        </div>
+        <style>
+            .video-frame video {
+                height: 80%;
+                width: 90%;
+            }
+            
+            .course-button {
+                height: 80px;
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+            }
+            
+            .course-button button {
+                height: 40px;
+                width: 100px;
+                color: white;
+                background-color: #062573;
+                margin-left: 0px;
+                margin-right: 10%;
+            }
+        </style>
+        <div class="course-container">
+            <h2>Video 1: Introduction to Web Development</h2>
+            <div class="video-frame">
+                <video controls>
+                    <source src="your-video-file.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="course-button">
+                <button>Previous</button>
+                <button>Next</button>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
