@@ -143,12 +143,13 @@ body {
     <section class="login-section">
         <div class="login-box">
             <h2>Log in</h2>
-            <form>
+            <form method="POST">
+                {% csrf_token %}
                 <div class="textbox">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" placeholder="Email" name="email" required>
                 </div>
                 <div class="textbox">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Password" name="password" required>
                 </div>
                 <button type="submit" class="btn">Log in</button>
                 <p>New User? <a href="{% url 'signup'%}">Register Here</a></p>

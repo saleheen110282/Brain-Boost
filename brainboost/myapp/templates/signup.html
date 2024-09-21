@@ -144,21 +144,20 @@ body {
     <section class="signup-section">
         <div class="signup-box">
             <h2>Sign Up</h2>
-            <form id="signupForm">
+            <form id="signupForm" method="POST">
+                {% csrf_token %}
                 <div class="textbox">
-                    <input type="text" placeholder="Full Name" id="name" required>
+                    <input type="text" placeholder="Full Name" id="name" name="name" required>
                 </div>
                 <div class="textbox">
-                    <input type="email" placeholder="Email" id="email" required>
+                    <input type="email" placeholder="Email" id="email" name="email" required>
+                </div>
+
+                <div class="textbox">
+                    <input type="password" placeholder="Password" id="Password" name="password" required>
                 </div>
                 <div class="textbox">
-                    <input type="tel" placeholder="Phone Number" id="phone" required>
-                </div>
-                <div class="textbox">
-                    <input type="text" placeholder="Password" id="Password" required>
-                </div>
-                <div class="textbox">
-                    <input type="tel" placeholder="Confirm Password" id="guardianPhone" required>
+                    <input type="password" placeholder="Confirm Password" id="guardianPhone" name="confirm_password" required>
                 </div>
                 <button type="submit" class="btn">Sign Up</button>
                 <p>Already have an account? <a href="{% url 'login'%}">Log In Here</a></p>
