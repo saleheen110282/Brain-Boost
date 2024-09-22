@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
@@ -42,6 +45,11 @@
                             <li><a>Courses</a></li>
                             <li><a>About Us</a></li>
                             <li><a>Contact us</a></li>
+                            {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li> <!-- Assuming 'logout' URL is defined -->
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li> <!-- Show login if not logged in -->
+                    {% endif %}
                         </ul>
                     </div>
                     <a href="{% url 'index' %}" class="btn btn-ghost text-3xl font-bold">Brain Boost</a>
@@ -53,7 +61,11 @@
                         <li><a href="{% url 'parentslogin' %}">Parents Portals</a></li>
                         <li><a href="{% url 'aboutus' %}">About Us</a></li>
                         <li><a>Contact us</a></li>
-                        <li><a href="{% url 'login'%}">Log in</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li> <!-- Assuming 'logout' URL is defined -->
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li> <!-- Show login if not logged in -->
+                    {% endif %}
                     </ul>
                 </div>
                 <!-- <div class="navbar-end">
@@ -63,6 +75,11 @@
         </nav>
         <!-- banner section -->
         <div class="bg-cover bg-center font" style="background-image: url(assets/banner.jpeg);">
+            {% if user.is_authenticated %}
+                <p style="float: right; margin-right: 30px;"><b>Hello {{user.username}}!</b></p>
+            {% else %}
+                
+            {% endif %}
             <h1 class="text-8xl py-60 font-bold">
                 Be the next coder <br> with us
             </h1>
@@ -76,7 +93,7 @@
             <!-- web dev -->
             <div class="card bg-base-100 w-96 shadow-xl mb-12">
                 <figure>
-                    <img src="./assets/web-dev.jpeg" alt="web dev" />
+                    <img src="{% static 'images/web-dev.jpeg' %}" alt="web dev" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title font-bold">Web Development</h2>

@@ -1,10 +1,20 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth import authenticate, login as auth_login, logout 
 
 # Create your views here.
 
 def homeview(request):
+    username = request.session.get('username')
+    user_id = request.session.get('user_id')
+    
+    # Optionally, you can fetch more data from the database using the user_id
+    
+    # Pass session data to the template
+    context = {
+        'username': username,
+        'user_id': user_id
+    }
     return render(request, 'index.html')
 
 def signupview(request):
@@ -23,16 +33,22 @@ def signupview(request):
 
 def login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username = username, password = password)
         if user is not None:
-            login(request, user)
+            auth_login(request, user)
+            request.session['username'] = user.username
+
+            # Redirect to a success page (e.g., dashboard)
             return redirect('index')
         else:
-            return HttpResponse("Username or Password is incorrect!")
-
+            return HttpResponse('Authentication Failed!')
     return render(request, 'signin.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('index') 
 
 def parentslogin(request):
     return render(request, 'parentssignin.html')
