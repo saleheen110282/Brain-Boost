@@ -11,6 +11,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .banner{
+            background-image: url("{% static 'images/banner.jpeg' %}");
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -74,9 +79,9 @@
             </div>
         </nav>
         <!-- banner section -->
-        <div class="bg-cover bg-center font" style="background-image: url(assets/banner.jpeg);">
+        <div class="bg-cover bg-center font banner">
             {% if user.is_authenticated %}
-                <p style="float: right; margin-right: 30px;"><b>Hello {{user.username}}!</b></p>
+                <p style="float: right; margin-top: 20px; margin-right: 30px;"><b>Hello {{user.username}}!</b></p>
             {% else %}
                 
             {% endif %}
@@ -108,22 +113,28 @@
             <!-- app dev -->
             <div class="card bg-base-100 w-96 shadow-xl mb-12">
                 <figure>
-                    <img src="assets/app-dev.jpeg" alt="app dev" />
+                    <img src="{% static 'images/app-dev.jpeg' %}" alt="app dev" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title font-bold">App Development</h2>
 
                     <div class="card-actions justify-end">
-                        <a href="payment.html">
-                        <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
-                        </a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'payment' %}"> <!-- Redirect to payment page if authenticated -->
+                                <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'login' %}"> <!-- Redirect to login page if not authenticated -->
+                            <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <!-- python -->
             <div class="card bg-base-100 w-96 shadow-xl mb-12">
                 <figure>
-                    <img src="./assets/python.jpeg" alt="python" />
+                    <img src="{% static 'images/python.jpeg' %}" alt="python" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title font-bold">Python</h2>
@@ -138,7 +149,7 @@
             <!-- game -->
             <div class="card bg-base-100 w-96 shadow-xl mb-12">
                 <figure>
-                    <img src="assets/game-dev.jpeg" alt="game dev" />
+                    <img src="{% static 'images/game-dev.jpeg' %}" alt="game dev" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title font-bold">Game Development</h2>
@@ -159,7 +170,7 @@
             <div class="card bg-base-100 w-96 shadow-xl">
 
                 <figure>
-                    <img src="assets/person-1.jpeg" alt="person-1" />
+                    <img src="{% static 'images/person-1.jpeg' %}" alt="person-1" />
                 </figure>
                 <div class="card-body">
                     <a href="payment.html">
@@ -171,7 +182,7 @@
             <div class="card bg-base-100 w-96 shadow-xl">
 
                 <figure>
-                    <img src="assets/person-2.jpeg" alt="person-1" />
+                    <img src="{% static 'images/person-2.jpeg' %}" alt="person-1" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title font-bold">Python</h2>
@@ -181,7 +192,7 @@
             <div class="card bg-base-100 w-96 shadow-xl">
 
                 <figure>
-                    <img src="assets/person-3.jpeg" alt="person-1" />
+                    <img src="{% static 'images/person-3.jpeg' %}" alt="person-1" />
                 </figure>
                 <div class="card-body">
                     <a href="payment.html">

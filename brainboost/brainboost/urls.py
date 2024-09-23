@@ -30,6 +30,7 @@ urlpatterns = [
     path('parentssignup/', views.parentssignup, name='parentssignup' ),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('logout/', views.logout_view, name='logout'),
+    path('payment/', views.payment, name='payment')
 ]
 
 if settings.DEBUG:

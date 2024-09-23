@@ -61,3 +61,6 @@ def aboutus(request):
 
 def contactus(request):
     pass
+
+def payment(request):
+    return render(request, 'payment.html')

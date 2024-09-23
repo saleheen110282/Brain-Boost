@@ -124,6 +124,8 @@ USE_TZ = True
 # settings.py
 
 STATIC_URL = '/static/'
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = BASE_DIR/'media'
 
 # Optional: Set a directory where static files will be collected (useful for deployment)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

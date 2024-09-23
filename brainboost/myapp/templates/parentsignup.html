@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f5f5f5;
+   background-image: url("{% static 'images/banner.jpeg' %}");
 }
 
 /* Navbar */
@@ -122,12 +124,15 @@ body {
     text-decoration: underline;
 }
 
+a{
+    text-decoration: none;
+}
      </style>
 </head>
 <body>
     <header>
         <div class="navbar">
-            <div class="logo">Brain Boost</div>
+            <div class="logo"><a href="{% url 'index' %}">Brain Boost</a></div>
             <nav>
                 <ul>
                     <ul class="menu menu-horizontal px-1 text-lg">
