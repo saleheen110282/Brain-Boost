@@ -103,11 +103,15 @@
                 <div class="card-body">
                     <h2 class="card-title font-bold">Web Development{{course.title}}</h2>
 
-                    <div class="card-actions justify-end">
-                        <a href="payment.html">
-                        <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
-                        </a>
-                    </div>
+                    {% if user.is_authenticated %}
+                            <a href="{% url 'payment' %}"> <!-- Redirect to payment page if authenticated -->
+                                <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'login' %}"> <!-- Redirect to login page if not authenticated -->
+                            <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% endif %}
                 </div>
             </div>
             <!-- app dev -->
@@ -139,11 +143,15 @@
                 <div class="card-body">
                     <h2 class="card-title font-bold">Python</h2>
 
-                    <div class="card-actions justify-end">
-                        <a href="payment.html">
-                        <button class="btn btn-primary bg-[#062573]" >Enroll Now</button>
-                    </a>
-                    </div>
+                    {% if user.is_authenticated %}
+                            <a href="{% url 'payment' %}"> <!-- Redirect to payment page if authenticated -->
+                                <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'login' %}"> <!-- Redirect to login page if not authenticated -->
+                            <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% endif %}
                 </div>
             </div>
             <!-- game -->
@@ -154,11 +162,15 @@
                 <div class="card-body">
                     <h2 class="card-title font-bold">Game Development</h2>
 
-                    <div class="card-actions justify-end">
-                        <a href="payment.html">
-                        <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
-                    </a>
-                    </div>
+                    {% if user.is_authenticated %}
+                            <a href="{% url 'payment' %}"> <!-- Redirect to payment page if authenticated -->
+                                <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'login' %}"> <!-- Redirect to login page if not authenticated -->
+                            <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
+                            </a>
+                        {% endif %}
                 </div>
             </div>
 

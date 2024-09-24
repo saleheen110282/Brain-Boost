@@ -16,11 +16,6 @@ def homeview(request):
         'user_id': user_id
     } 
 
-    all_courses = Courses.objects.filter( user = request.user)
-    context = {
-        'courses' : all_courses
-    }
-    
     
     return render(request, 'index.html')
 
