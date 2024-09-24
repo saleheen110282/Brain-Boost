@@ -67,13 +67,9 @@ def contactus(request):
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
         message = request.POST.get('message')
-
-        # Create a new contact entry
         contact = Contact(name=name, email=email, mobile=mobile, message=message)
-        contact.save()  # Save the contact to the database
-
-        # Redirect to a success page or the same page
-        return redirect('success')  # You can replace 'success' with your desired URL name
+        contact.save()
+        return redirect('success')
 
     return render(request, 'contact.html')
 
