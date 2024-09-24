@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse,  get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
-from .models import Courses,Contact,Parent
+from .models import Courses,Contact,Parent, Quiz
 # Create your views here.
 
 def homeview(request):
@@ -90,3 +90,9 @@ def success(request):
     return render(request, 'success.html')
 
 
+
+
+def quiz_view(request):
+    print(type(Quiz))  # Should print something like <class 'yourapp.models.Quiz'>
+    quiz = Quiz.objects.get()
+    return render(request, 'quiz.html', {'quiz': quiz})
