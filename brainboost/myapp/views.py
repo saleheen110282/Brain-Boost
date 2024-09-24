@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
-
+from .models import Courses
 # Create your views here.
 
 def homeview(request):
@@ -14,7 +14,14 @@ def homeview(request):
     context = {
         'username': username,
         'user_id': user_id
+    } 
+
+    all_courses = Courses.objects.filter( user = request.user)
+    context = {
+        'courses' : all_courses
     }
+    
+    
     return render(request, 'index.html')
 
 def signupview(request):
@@ -60,7 +67,8 @@ def aboutus(request):
     return render(request, 'About us.html')
 
 def contactus(request):
-    pass
+    return render(request, 'contact.html')
 
 def payment(request):
     return render(request, 'payment.html')
+

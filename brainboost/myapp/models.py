@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -9,6 +10,9 @@ class Courses(models.Model):
     image = models.ImageField(upload_to='courses')
     description = models.TextField()
 
+    def __str__(self):
+        return self.title
+
 class Students(models.Model):
     username = models.CharField(max_length=100)
     image = models.ImageField(upload_to='students')
@@ -16,7 +20,8 @@ class Students(models.Model):
     password = models.TextField(max_length=50)
     mobile = models.TextField(max_length=50)
 
+    def __str__(self):
+        return self.title
 
 
-def __str__(self):
-    return self.title
+

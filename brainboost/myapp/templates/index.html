@@ -49,7 +49,7 @@
                             <li><a>Home</a></li>
                             <li><a>Courses</a></li>
                             <li><a>About Us</a></li>
-                            <li><a>Contact us</a></li>
+                            <li><a href="{% url 'contact'%}">Contact us</a></li>
                             {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}">Logout</a></li> <!-- Assuming 'logout' URL is defined -->
                     {% else %}
@@ -65,7 +65,7 @@
                         <li><a href="courses.html">Courses</a></li>
                         <li><a href="{% url 'parentslogin' %}">Parents Portals</a></li>
                         <li><a href="{% url 'aboutus' %}">About Us</a></li>
-                        <li><a>Contact us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact us</a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}">Logout</a></li> <!-- Assuming 'logout' URL is defined -->
                     {% else %}
@@ -101,7 +101,7 @@
                     <img src="{% static 'images/web-dev.jpeg' %}" alt="web dev" />
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title font-bold">Web Development</h2>
+                    <h2 class="card-title font-bold">Web Development{{course.title}}</h2>
 
                     <div class="card-actions justify-end">
                         <a href="payment.html">
@@ -257,6 +257,8 @@
          </div>
 
     </main>
+
+
     <!-- footer section -->
     <footer class="footer footer-center bg-[#062573] text-neutral-content p-10">
         <aside>
