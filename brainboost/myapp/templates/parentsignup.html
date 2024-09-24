@@ -151,26 +151,27 @@ a{
     <section class="signup-section">
         <div class="signup-box">
             <h2>Sign Up</h2>
-            <form id="signupForm">
-                <div class="textbox">
-                    <input type="text" placeholder="Full Name" id="name" required>
-                </div>
-                <div class="textbox">
-                    <input type="email" placeholder="Student Unique ID" id="email" required>
-                </div>
-                <div class="textbox">
-                    <input type="tel" placeholder="Email" id="phone" required>
-                </div>
-                <div class="textbox">
-                    <input type="text" placeholder="Password" id="guardianName" required>
-                </div>
-                
-                <button type="submit" class="btn">Sign Up</button>
-                <p>Already have an account? <a href="#">Log In Here</a></p>
-            </form>
+            <form id="signupForm" method="POST" action="{% url 'parentssignup' %}">
+    {% csrf_token %}
+    <div class="textbox">
+        <input type="text" name="name" placeholder="Full Name" id="name" required>
+    </div>
+<!--    <div class="textbox">-->
+<!--        <input type="text" name="studentid" placeholder="Student Unique ID" id="email" required>-->
+<!--    </div>-->
+    <div class="textbox">
+        <input type="tel" name="email" placeholder="Email" id="email" required>
+    </div>
+    <div class="textbox">
+        <input type="text" name="password" placeholder="Password" id="guardianName" required>
+    </div>
+
+    <button type="submit" class="btn">Sign Up</button>
+    <p>Already have an account? <a href="#">Log In Here</a></p>
+</form>
         </div>
     </section>
 
-    <script src="signup.js"></script>
+<!--    <script src="signup.js"></script>-->
 </body>
 </html>

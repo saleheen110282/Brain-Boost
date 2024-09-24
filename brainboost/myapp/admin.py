@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Courses, Students,Contact
+from .models import Courses, Students,Contact,Parent
 from django.contrib import admin
 @admin.register(Courses)
 class CourseModelAdmin(admin.ModelAdmin):
@@ -11,3 +11,4 @@ class StudentModelAdmin(admin.ModelAdmin):  # Fixed typo: Admn to Admin
 
 
 admin.site.register(Contact)
+admin.site.register(Parent)

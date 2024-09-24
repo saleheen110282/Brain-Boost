@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
-from .models import Courses,Contact
+from .models import Courses,Contact,Parent
 # Create your views here.
 
 def homeview(request):
@@ -53,8 +53,18 @@ def logout_view(request):
 def parentslogin(request):
     return render(request, 'parentssignin.html')
 
+
 def parentssignup(request):
-    return render(request,   'parentsignup.html')
+    if request.method == 'POST':
+        # Retrieve data from the form
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        parent = Parent(name=name, email=email, password=password)
+        parent.save()
+        return redirect('success')
+
+    return render(request, 'parentsignup.html')
 
 def aboutus(request):
     return render(request, 'About us.html')
