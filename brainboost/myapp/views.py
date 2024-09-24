@@ -48,9 +48,37 @@ def login(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('index') 
+    return redirect('index')
 
-def parentslogin(request):
+
+# views.py
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from .models import Parent  # Ensure you import your Parent model
+
+# views.py
+from django.shortcuts import render, redirect
+from django.contrib.auth import login  # We still need login to set the user session
+from .models import Parent  # Ensure you import your Parent model
+
+
+def parentssignin(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        try:
+            parent = Parent.objects.get(email=email)
+            if parent.password == password:
+                # login(request, parent)
+                return redirect('success')
+            else:
+                error_message = "Invalid email or password."
+        except Parent.DoesNotExist:
+            error_message = "Invalid email or password."
+
+        return render(request, 'parentssignin.html', {'error_message': error_message})
+
     return render(request, 'parentssignin.html')
 
 

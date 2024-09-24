@@ -137,7 +137,7 @@ a{
                 <ul>
                     <li><a href="{% url 'index'%}">Home</a></li>
                     <li><a href="courses.html">Courses</a></li>
-                    <li><a href="{% url 'parentslogin'%}">Parents Portal</a></li>
+                    <li><a href="{% url 'parentssignin'%}">Parents Portal</a></li>
                     <li><a href="{% url 'aboutus' %}">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
                     <li><a href="{% url 'parentssignup' %}">Sign Up</a></li>
@@ -148,16 +148,21 @@ a{
     <section class="login-section">
         <div class="login-box">
             <h2>Parents Log in</h2>
-            <form>
-                <div class="textbox">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="textbox">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn">Log in</button>
-                <p>New User? <a href="{% url 'parentssignup'%}">Register Here</a></p>
-            </form>
+            <form method="POST" action="{% url 'parentssignin' %}">
+    {% csrf_token %}
+    <div class="textbox">
+        <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <div class="textbox">
+        <input type="password" name="password" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn">Log in</button>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <p>New User? <a href="{% url 'parentssignup' %}">Register Here</a></p>
+</form>
+
         </div>
     </section>
 </body>
