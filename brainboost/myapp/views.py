@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
-from .models import Courses
+from .models import Courses,Contact
 # Create your views here.
 
 def homeview(request):
@@ -46,8 +46,6 @@ def login(request):
         if user is not None:
             auth_login(request, user)
             request.session['username'] = user.username
-
-            # Redirect to a success page (e.g., dashboard)
             return redirect('index')
         else:
             return HttpResponse('Authentication Failed!')
@@ -66,9 +64,28 @@ def parentssignup(request):
 def aboutus(request):
     return render(request, 'About us.html')
 
+
 def contactus(request):
+    if request.method == 'POST':
+        # Get data from the form
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        message = request.POST.get('message')
+
+        # Create a new contact entry
+        contact = Contact(name=name, email=email, mobile=mobile, message=message)
+        contact.save()  # Save the contact to the database
+
+        # Redirect to a success page or the same page
+        return redirect('success')  # You can replace 'success' with your desired URL name
+
     return render(request, 'contact.html')
 
 def payment(request):
     return render(request, 'payment.html')
+
+def success(request):
+    return render(request, 'success.html')
+
 

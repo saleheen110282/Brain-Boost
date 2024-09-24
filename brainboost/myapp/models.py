@@ -3,7 +3,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class Courses(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
@@ -13,15 +12,24 @@ class Courses(models.Model):
     def __str__(self):
         return self.title
 
+
 class Students(models.Model):
     username = models.CharField(max_length=100)
     image = models.ImageField(upload_to='students')
-    email = models.EmailField(default='user@gamil.com')
-    password = models.TextField(max_length=50)
-    mobile = models.TextField(max_length=50)
+    email = models.EmailField(default='user@gmail.com')
+    password = models.CharField(max_length=50,default='password123')
+    mobile = models.CharField(max_length=15, default='0000000000')
 
     def __str__(self):
-        return self.title
+        return self.username
 
 
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    mobile = models.CharField(max_length=15, default='0000000000')
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
 

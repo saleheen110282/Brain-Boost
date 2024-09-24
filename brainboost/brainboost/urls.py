@@ -31,7 +31,8 @@ urlpatterns = [
     path('aboutus/', views.aboutus, name='aboutus'),
     path('logout/', views.logout_view, name='logout'),
     path('payment/', views.payment, name='payment'),
-    path('contact/', views.contactus, name='contact'),
+    path('contactus/', views.contactus, name='contactus'),
+    path('success/', views.success, name='success'),
 ]
 
 if settings.DEBUG:

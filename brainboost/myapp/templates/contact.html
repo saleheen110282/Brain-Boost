@@ -25,13 +25,14 @@
     <!-- Contact Us Section -->
     <section class="contact-section">
         <h2>Contact Us</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <input type="tel" placeholder="Mobile Number" required>
-            <textarea placeholder="Message" rows="5" required></textarea>
-            <button type="submit" class="btn-submit">Send</button>
-        </form>
+        <form class="contact-form" method="POST" action="{% url 'contactus' %}">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="mobile" placeholder="Mobile Number" required>
+        <textarea name="message" placeholder="Message" rows="5" required></textarea>
+        <button type="submit" class="btn-submit">Send</button>
+    </form>
     </section>
 
 </body>
