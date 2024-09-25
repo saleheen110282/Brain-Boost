@@ -51,14 +51,7 @@ def logout_view(request):
     return redirect('index')
 
 
-# views.py
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from .models import Parent  # Ensure you import your Parent model
 
-# views.py
-from django.shortcuts import render, redirect
-from django.contrib.auth import login  # We still need login to set the user session
 from .models import Parent  # Ensure you import your Parent model
 
 
@@ -70,7 +63,7 @@ def parentssignin(request):
         try:
             parent = Parent.objects.get(email=email)
             if parent.password == password:
-                # login(request, parent)
+                auth_login(request, parent)
                 return redirect('success')
             else:
                 error_message = "Invalid email or password."
@@ -112,6 +105,8 @@ def contactus(request):
     return render(request, 'contact.html')
 
 def payment(request):
+    if request.method == 'POST':
+        return redirect("course")
     return render(request, 'payment.html')
 
 def success(request):
@@ -124,3 +119,8 @@ def quiz_view(request):
     print(type(Quiz))  # Should print something like <class 'yourapp.models.Quiz'>
     quiz = Quiz.objects.get()
     return render(request, 'quiz.html', {'quiz': quiz})
+
+    
+
+def course_page_view(request):
+    return render(request, 'Coursepage.html')

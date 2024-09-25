@@ -26,14 +26,15 @@ urlpatterns = [
     path('', views.homeview, name = 'index'),
     path('signup/', views.signupview, name = 'signup'),
     path('login/', views.login, name = 'login'),
-    path('parentssignin/', views.parentssignin, name='parentssignin'),
+    path('parentssignin/', views.parentssignin, name='parentslogin'),
     path('parentssignup/', views.parentssignup, name='parentssignup' ),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('logout/', views.logout_view, name='logout'),
     path('payment/', views.payment, name='payment'),
     path('contactus/', views.contactus, name='contactus'),
     path('success/', views.success, name='success'),
-    path('quiz/', views.quiz_view, name='quiz')
+    path('quiz/', views.quiz_view, name='quiz'),
+    path('course/', views.course_page_view, name='course')
 ]
 
 if settings.DEBUG:
