@@ -35,7 +35,8 @@ urlpatterns = [
     #path('success/', views.success, name='success'),
     path('quiz/', views.quiz_view, name='quiz'),
     path('course/', views.course_page_view, name='course'),
-    path('projectpage/', views.projectpage, name='projectpage')
+    path('projectpage/', views.projectpage, name='projectpage'),
+    path('quizresult/', views.quizresult, name='quizresult'),
 ]
 
 if settings.DEBUG:

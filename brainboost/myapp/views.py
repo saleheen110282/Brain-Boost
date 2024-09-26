@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse,  get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
-from .models import Courses,Contact,Parent, Quiz
+from .models import Courses,Contact,Parent, Quiz, Question, Answer
 # Create your views here.
 
 def homeview(request):
@@ -57,18 +57,18 @@ from .models import Parent  # Ensure you import your Parent model
 
 def parentssignin(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
         try:
-            parent = Parent.objects.get(email=email)
+            parent = Parent.objects.get(name=username)
             if parent.password == password:
-                auth_login(request, parent)
+                login(request, parent)
                 return redirect('success')
             else:
-                error_message = "Invalid email or password."
+                error_message = "Invalid username or password."
         except Parent.DoesNotExist:
-            error_message = "Invalid email or password."
+            error_message = "Invalid username or password."
 
         return render(request, 'parentssignin.html', {'error_message': error_message})
 
@@ -116,10 +116,39 @@ def success(request):
 
 
 def quiz_view(request):
-    print(type(Quiz))  # Should print something like <class 'yourapp.models.Quiz'>
     quiz = Quiz.objects.get()
+
+    if request.method == 'POST':
+        score = 0
+        total_questions = quiz.questions.count()
+        
+        for question in quiz.questions.all():
+            selected_answer_id = request.POST.get(f'question_{question.id}')
+            
+            if selected_answer_id:
+                selected_answer = Answer.objects.get(id=selected_answer_id)
+                
+                # Check if the selected answer is correct
+                if selected_answer.is_correct:
+                    score += 1
+
+        # Calculate percentage or points if necessary
+        percentage_score = (score / total_questions) * 100 if total_questions else 0
+
+        return render(request, 'quiz_result.html', {
+            'quiz': quiz,
+            'score': score,
+            'total_questions': total_questions,
+            'percentage_score': percentage_score,
+        })
+
+
+
+
     return render(request, 'quiz.html', {'quiz': quiz})
 
+def quizresult(request):
+    return render(request, 'quiz_result.html')
     
 
 def course_page_view(request):
