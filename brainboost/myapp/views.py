@@ -83,7 +83,7 @@ def parentssignup(request):
         password = request.POST.get('password')
         parent = Parent(name=name, email=email, password=password)
         parent.save()
-        return redirect('success')
+        return redirect('parentslogin')
 
     return render(request, 'parentsignup.html')
 
@@ -100,7 +100,7 @@ def contactus(request):
         message = request.POST.get('message')
         contact = Contact(name=name, email=email, mobile=mobile, message=message)
         contact.save()
-        return redirect('success')
+        return redirect('contactus')
 
     return render(request, 'contact.html')
 
@@ -124,3 +124,8 @@ def quiz_view(request):
 
 def course_page_view(request):
     return render(request, 'Coursepage.html')
+
+
+
+def projectpage(request):
+    return render(request, 'projectpage.html')

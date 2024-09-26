@@ -32,9 +32,10 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('payment/', views.payment, name='payment'),
     path('contactus/', views.contactus, name='contactus'),
-    path('success/', views.success, name='success'),
+    #path('success/', views.success, name='success'),
     path('quiz/', views.quiz_view, name='quiz'),
-    path('course/', views.course_page_view, name='course')
+    path('course/', views.course_page_view, name='course'),
+    path('projectpage/', views.projectpage, name='projectpage')
 ]
 
 if settings.DEBUG:
