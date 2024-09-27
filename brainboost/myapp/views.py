@@ -57,13 +57,13 @@ from .models import Parent  # Ensure you import your Parent model
 
 def parentssignin(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        email = request.POST.get('email').lower()
         password = request.POST.get('password')
 
         try:
-            parent = Parent.objects.get(name=username)
+            parent = Parent.objects.get(email=email)
+            print(email.lower(),password,": ",parent.email,parent.password)
             if parent.password == password:
-                login(request, parent)
                 return redirect('success')
             else:
                 error_message = "Invalid username or password."
@@ -79,7 +79,7 @@ def parentssignup(request):
     if request.method == 'POST':
         # Retrieve data from the form
         name = request.POST.get('name')
-        email = request.POST.get('email')
+        email = request.POST.get('email').lower()
         password = request.POST.get('password')
         parent = Parent(name=name, email=email, password=password)
         parent.save()
@@ -149,12 +149,49 @@ def quiz_view(request):
 
 def quizresult(request):
     return render(request, 'quiz_result.html')
-    
 
-def course_page_view(request):
-    return render(request, 'Coursepage.html')
+def course_page_view1(request):
+    items = [
+        "Video 1: Introduction to Web Development",
+        "Video 2: Introduction to Web Development",
+        "Quiz 1",
+        "Video 3: Introduction to Web Development",
+        "Quiz 2",
+        "Video 4: Introduction to Web Development",
+        "Project 1: Webpage using HTML and CSS"
+    ]
+    item_id=0
+    if item_id < 0:
+        item_id=0
+    current_item = items[item_id]
 
+    return render(request, 'Coursepage.html', {
+        'current_item': current_item,
+        'item_id': item_id,
+        'items': items,
+        'max': len(items)-1,
+    })
+def course_page_view(request,item_id):
+    items = [
+        "Video 1: Introduction to Web Development",
+        "Video 2: Introduction to Web Development",
+        "Quiz 1",
+        "Video 3: Introduction to Web Development",
+        "Quiz 2",
+        "Video 4: Introduction to Web Development",
+        "Project 1: Webpage using HTML and CSS"
+    ]
 
+    if item_id < 0:
+        item_id=0
+    current_item = items[item_id]
+
+    return render(request, 'Coursepage.html', {
+        'current_item': current_item,
+        'item_id': item_id,
+        'items': items,
+        'max': len(items)-1,
+    })
 
 def projectpage(request):
     return render(request, 'projectpage.html')

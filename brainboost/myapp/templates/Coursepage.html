@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:items>
 
 <head>
     <meta charset="UTF-8">
@@ -86,6 +86,7 @@
         .course-item {
             width: 100%;
             border: 1px solid white;
+
         }
         
         .course-outline p {
@@ -93,6 +94,14 @@
             overflow: hidden;
             margin-left: 10px;
             margin-right: 5px;
+            text-decoration: none;
+        }
+        .course-outline a:visited {
+            color: white;
+            overflow: hidden;
+            margin-left: 10px;
+            margin-right: 5px;
+            text-decoration: none;
         }
     </style>
     <section>
@@ -110,7 +119,7 @@
                 <p>Video 1: Introduction to Web Development</p>
             </div>
             <div class="course-item">
-                <p>Quiz 1</p>
+                <p><a href="{% url 'quiz' %}">Quiz 2</a></p>
             </div>
             <div class="course-item">
                 <p>Video 1: Introduction to Web Development</p>
@@ -141,9 +150,16 @@
                 margin-left: 0px;
                 margin-right: 10%;
             }
+
+            .course-button form {
+                height: 40px;
+                width: 100px;
+                margin-left: 0px;
+                margin-right: 10%;
+            }
         </style>
         <div class="course-container">
-            <h2>Video 1: Introduction to Web Development</h2>
+            <h2>{{current_item}}</h2>
             <div class="video-frame">
                 <video controls>
                     <source src="your-video-file.mp4" type="video/mp4">
@@ -151,8 +167,12 @@
                 </video>
             </div>
             <div class="course-button">
-                <button>Previous</button>
-                <button>Next</button>
+                <form method="GET" action="{% if item_id > 0 %}{% url 'course' item_id=item_id|add:-1 %}{% endif %}">
+                <button type="submit" {% if item_id == 0 %}disabled{% endif %}>Previous</button>
+            </form>
+            <form method="GET" action="{% url 'course' item_id=item_id|add:1 %}">
+                <button type="submit" {% if item_id == max %}disabled{% endif %}>Next</button>
+            </form>
             </div>
         </div>
     </section>
