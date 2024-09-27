@@ -106,7 +106,7 @@ def contactus(request):
 
 def payment(request):
     if request.method == 'POST':
-        return redirect("course")
+        return redirect('course1')
     return render(request, 'payment.html')
 
 def success(request):
@@ -153,11 +153,11 @@ def quizresult(request):
 def course_page_view1(request):
     items = [
         "Video 1: Introduction to Web Development",
-        "Video 2: Introduction to Web Development",
+        "Video 2: Introduction to HTML",
         "Quiz 1",
-        "Video 3: Introduction to Web Development",
+        "Video 3: Introduction to CSS",
         "Quiz 2",
-        "Video 4: Introduction to Web Development",
+        "Video 4: Introduction to Javascript",
         "Project 1: Webpage using HTML and CSS"
     ]
     item_id=0
@@ -174,17 +174,21 @@ def course_page_view1(request):
 def course_page_view(request,item_id):
     items = [
         "Video 1: Introduction to Web Development",
-        "Video 2: Introduction to Web Development",
+        "Video 2: Introduction to HTML",
         "Quiz 1",
-        "Video 3: Introduction to Web Development",
+        "Video 3: Introduction to CSS",
         "Quiz 2",
-        "Video 4: Introduction to Web Development",
+        "Video 4: Introduction to Javascript",
         "Project 1: Webpage using HTML and CSS"
     ]
 
     if item_id < 0:
         item_id=0
     current_item = items[item_id]
+
+    if "Quiz" in current_item:
+        # Redirect to the quiz page (modify the URL or view name as necessary)
+        return redirect('quiz')
 
     return render(request, 'Coursepage.html', {
         'current_item': current_item,
