@@ -64,7 +64,7 @@ def parentssignin(request):
             parent = Parent.objects.get(email=email)
             print(email.lower(),password,": ",parent.email,parent.password)
             if parent.password == password:
-                return redirect('success')
+                return redirect('index')
             else:
                 error_message = "Invalid username or password."
         except Parent.DoesNotExist:
