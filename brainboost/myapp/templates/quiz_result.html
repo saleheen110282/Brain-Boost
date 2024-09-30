@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="{% static 'quiz.css' %}">
+</head>
+<body>
+    <div class="result-container">
+        <h1>Quiz: {{ quiz.title }}</h1>
+        <p>You've completed the quiz!</p>
+        <h2>Your Score: {{ score }} / {{ total_questions }}</h2>
+        <h3>Percentage: {{ percentage_score }}%</h3>
+        
+        <!-- Optionally, add explanations or correct answers -->
+        <a href="{% url 'course1' %}" class="btn">Back to Quiz List</a>
+    </div>
+</body>
+</html>

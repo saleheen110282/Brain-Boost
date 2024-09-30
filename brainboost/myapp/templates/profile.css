@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('Background.jpeg'); /* Add your background image */
+    background-size: cover; /* Makes the image cover the entire background */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h2 {
+    color: #003399;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #003399;
+    font-weight: bold;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(232, 189, 189, 0.9); /* Transparent background */
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile .profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+}
+
+.profile .profile-details h1 {
+    font-size: 2rem;
+    color: #003399;
+}
+
+.profile .profile-details p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.courses {
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgba(232, 189, 189, 0.9); /* Transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(245, 103, 103, 0.1);
+}
+
+.courses h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.course-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.course-card {
+    background-color: #fff;
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+}
+
+.course-card img {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.course-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.btn-continue, .btn-completed {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-continue {
+    background-color: #003399;
+}
+
+.btn-completed {
+    background-color: #4CAF50;
+}
+
+.btn-continue:hover, .btn-completed:hover {
+    opacity: 0.9;
+}

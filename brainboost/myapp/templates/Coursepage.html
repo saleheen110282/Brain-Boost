@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns:items>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Page</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        header {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 15px;
+            margin-right: 15px;
+            color: #062573;
+        }
+        
+        h2 {
+            text-wrap: nowrap;
+        }
+        
+        .nav-items {
+            list-style: none;
+            display: flex;
+            min-width: 400px;
+            max-width: 400px;
+            align-items: center;
+            justify-content: space-around;
+            font-weight: 600;
+        }
+        
+        h1 {
+            color: #062573;
+            font-weight: 900;
+            font-size: 44px;
+            margin-left: 5%;
+        }
+    </style>
+    <header>
+        <h2><a href="homepage.html">Brain Boost</a></h2>
+
+        <ul class="nav-items">
+            <li><a href="Homepage.html">Home</a></li>
+            <li>Courses</li>
+            <li><a href="About us.html">About Us</a></li>
+            <li>Contact us</li>
+            <li>Login</li>
+        </ul>
+    </header>
+    <style>
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 600;
+            width: 100%;
+        }
+        
+        .course-outline {
+            height: 500px;
+            width: 30%;
+            background-color: #062573;
+        }
+        
+        .course-container {
+            height: 550px;
+            width: 70%;
+            background-color: white;
+            padding-left: 8%;
+        }
+        
+        .course-item {
+            width: 100%;
+            border: 1px solid white;
+
+        }
+        
+        .course-outline p {
+            color: white;
+            overflow: hidden;
+            margin-left: 10px;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+        .course-outline a:visited {
+            color: white;
+            overflow: hidden;
+            margin-left: 10px;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+    </style>
+    <section>
+        <div class="course-outline">
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+            <div class="course-item">
+                <p><a href="{% url 'quiz' %}">Quiz 1</a></p>
+            </div>
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+            <div class="course-item">
+                <p><a href="{% url 'quiz' %}">Quiz 2</a></p>
+            </div>
+            <div class="course-item">
+                <p>Video 1: Introduction to Web Development</p>
+            </div>
+            <div class="course-item"></div>
+                <p><a href="{% url 'projectpage' %}">Project 1: Webpage using HTML and CSS </a></p>
+            </div>
+        </div>
+        <style>
+            .video-frame video {
+                height: 80%;
+                width: 90%;
+            }
+            
+            .course-button {
+                height: 80px;
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+            }
+            
+            .course-button button {
+                height: 40px;
+                width: 100px;
+                color: white;
+                background-color: #062573;
+                margin-left: 0px;
+                margin-right: 10%;
+            }
+
+            .course-button form {
+                height: 40px;
+                width: 100px;
+                margin-left: 0px;
+                margin-right: 10%;
+            }
+        </style>
+        <div class="course-container">
+            <h2>{{current_item}}</h2>
+            <div class="video-frame">
+                <video controls>
+                    <source src="your-video-file.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="course-button">
+                <form method="GET" action="{% if item_id > 0 %}{% url 'course' item_id=item_id|add:-1 %}{% endif %}">
+                <button type="submit" {% if item_id == 0 %}disabled{% endif %}>Previous</button>
+            </form>
+            <form method="GET" action="{% url 'course' item_id=item_id|add:1 %}">
+                <button type="submit" {% if item_id == max %}disabled{% endif %}>Next</button>
+            </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

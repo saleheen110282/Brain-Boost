@@ -1,0 +1,103 @@
+{% load static %}
+
+<!-- templates/quiz_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }}</title>
+    <link rel="stylesheet" href="{% static 'quiz.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .banner{
+            background-image: url("{% static 'images/banner.jpeg' %}");
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                        'arch-primary': '#062573',
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-xl">
+                        <li><a>Home</a></li>
+                        <li><a>Courses</a></li>
+                        <li><a>About Us</a></li>
+                        <li><a href="{% url 'contactus'%}">Contact us</a></li>
+                        {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li> <!-- Assuming 'logout' URL is defined -->
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li> <!-- Show login if not logged in -->
+                {% endif %}
+                    </ul>
+                </div>
+                <a href="{% url 'index' %}" class="btn btn-ghost text-3xl font-bold">Brain Boost</a>
+            </div>
+            <div class="navbar-end hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 text-lg">
+                    <li><a href="{% url 'index'%}">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="{% url 'parentslogin' %}">Parents Portals</a></li>
+                    <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                    <li><a href="{% url 'contactus' %}">Contact us</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li> <!-- Assuming 'logout' URL is defined -->
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li> <!-- Show login if not logged in -->
+                {% endif %}
+                </ul>
+            </div>
+            <!-- <div class="navbar-end">
+              <a class="btn">Log in</a>
+            </div> -->
+        </div>
+    </nav>
+    <div class="quiz-container">
+        <h1 class="quiz-title">{{ quiz.title }}</h1>
+        <p class="quiz-description">{{ quiz.description }}</p>
+
+        <form method="post" class="quiz-form">
+            {% csrf_token %}
+            <div class="questions">
+                {% for question in quiz.questions.all %}
+                    <div class="question">
+                        <h3 class="question-text">{{ question.text }}</h3>
+                        <div class="answers">
+                            {% for answer in question.answers.all %}
+                                <label class="answer-option">
+                                    <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
+                                    {{ answer.text }}
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+    </div>
+</body>
+</html>
