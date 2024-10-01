@@ -8,7 +8,7 @@ const Payment = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        minHeight: "87vh",
         backgroundColor: "#f7f7f7",
         padding: "20px",
       }}
@@ -114,15 +114,7 @@ const Payment = () => {
 
         <button
           type="submit"
-          style={{
-            padding: "12px",
-            backgroundColor: "#28a745",
-            color: "#fff",
-            fontSize: "1.2rem",
-            borderRadius: "5px",
-            border: "none",
-            cursor: "pointer",
-          }}
+          className="primary-btn"
         >
           Pay Now
         </button>

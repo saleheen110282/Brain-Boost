@@ -1,7 +1,7 @@
-// src/components/SignIn.jsx
+// src/components/ParentsPortal.jsx
 import React from "react";
 
-const SignIn = () => {
+const ParentsPortal = () => {
   return (
     <div
       style={{
@@ -33,4 +33,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ParentsPortal;

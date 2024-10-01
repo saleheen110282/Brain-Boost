@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const ServicesData = [
   {
     id: 1,
-    title: "C Programming For Class 6-10",
+    title: "C Programming",
     link: "#",
     icon: <TbWorldWww />,
     delay: 0.2,
@@ -45,7 +45,7 @@ const ServicesData = [
   },
   {
     id: 6,
-    title: "R",
+    title: "React",
     link: "#",
     icon: <BiSupport />,
     delay: 0.7,
