@@ -8,58 +8,42 @@ export default function Lecture() {
     const courses = [
         {
             image: lectue_1,
-            title: "Introduction to React",
-            className: "Web Development",
-            totalLessons: 12,
-            duration: "6 weeks",
-            description:
-                "Learn the fundamentals of React and build modern web applications.",
+            title: "Advanced C Programming",
+            totalLessons: 8,
+            duration: "5 weeks",
             learningOutcomes: [
-                "Understand React components",
-                "Master state management",
-                "Build single-page applications",
+                "Learn to code like a pro",
+                "Project based learning",
             ],
         },
         {
             image: lectue_2,
             title: "Advanced JavaScript",
-            className: "Programming",
-            totalLessons: 15,
+            totalLessons: 9,
             duration: "8 weeks",
-            description:
-                "Dive deep into advanced JavaScript concepts and patterns.",
             learningOutcomes: [
                 "Master closures and prototypes",
                 "Understand async programming",
-                "Implement design patterns",
             ],
         },
         {
             image: lectue_3,
-            title: "UI/UX Design Principles",
-            className: "Design",
+            title: "App Development",
             totalLessons: 10,
-            duration: "5 weeks",
-            description:
-                "Learn the core principles of creating effective user interfaces and experiences.",
+            duration: "18 weeks",
             learningOutcomes: [
-                "Apply color theory in designs",
-                "Create user-centered interfaces",
-                "Conduct usability testing",
+                "Learn to build apps, games",
+                "Project based learning",
             ],
         },
         {
             image: lectue_4,
-            title: "Data Structures and Algorithms",
-            className: "Computer Science",
-            totalLessons: 20,
-            duration: "10 weeks",
-            description:
-                "Master fundamental data structures and algorithms for efficient problem-solving.",
+            title: "Full Stack Web Development",
+            totalLessons: "11-12",
+            duration: "26 weeks",
             learningOutcomes: [
-                "Implement common data structures",
-                "Analyze algorithm complexity",
-                "Solve coding challenges",
+                "Master website development",
+                "Implement best practices in web dev",
             ],
         },
     ];

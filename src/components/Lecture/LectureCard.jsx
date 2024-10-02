@@ -37,12 +37,10 @@ const LectureCard = ({
             />
             <div className="p-4 flex-grow">
                 <h3 className="text-lg font-semibold">{title}</h3>
-                <p className="text-sm text-gray-600">{className}</p>
                 <div className="flex justify-between text-sm text-gray-600 my-2">
-                    <span>{totalLessons} lessons</span>
+                    <span>Class {totalLessons} </span>
                     <span>{duration}</span>
                 </div>
-                <p className="text-sm mb-4">{description}</p>
                 <div>
                     <h4 className="font-semibold mb-2">Learning Outcomes:</h4>
                     <ul className="list-disc list-inside text-sm">

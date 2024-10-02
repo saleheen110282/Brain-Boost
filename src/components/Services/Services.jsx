@@ -1,10 +1,10 @@
 import React from "react";
-import { RiComputerLine } from "react-icons/ri";
+import { FaPython } from "react-icons/fa";
 import { CiMobile3 } from "react-icons/ci";
 import { TbWorldWww } from "react-icons/tb";
-import { IoMdHappy } from "react-icons/io";
-import { BiSupport } from "react-icons/bi";
-import { IoPulseOutline } from "react-icons/io5";
+import { FaJava } from "react-icons/fa";
+import { FaReact } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
 import { motion } from "framer-motion";
 
 const ServicesData = [
@@ -26,28 +26,28 @@ const ServicesData = [
     id: 3,
     title: "Python",
     link: "#",
-    icon: <RiComputerLine />,
+    icon: <FaPython />,
     delay: 0.4,
   },
   {
     id: 4,
     title: "Java",
     link: "#",
-    icon: <IoMdHappy />,
+    icon: <FaJava />,
     delay: 0.5,
   },
   {
     id: 5,
     title: "Javascript",
     link: "#",
-    icon: <IoPulseOutline />,
+    icon: <IoLogoJavascript />,
     delay: 0.6,
   },
   {
     id: 6,
     title: "React",
     link: "#",
-    icon: <BiSupport />,
+    icon: <FaReact />,
     delay: 0.7,
   },
 ];
@@ -74,7 +74,7 @@ const Services = () => {
     <section className="bg-white">
       <div className="container pb-14 pt-16">
         <h1 className="text-4xl font-bold text-left pb-10">
-          Courses we provide
+        The tools  you will learn
         </h1>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8">
           {ServicesData.map((service) => (
