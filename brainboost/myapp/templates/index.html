@@ -8,7 +8,6 @@
     <title>Brain Boost</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .banner {
             background-image: url("{% static 'images/banner.jpeg' %}");
@@ -48,22 +47,11 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
         }
     </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                        'arch-primary': '#062573',
-                    },
-                },
-            },
-        }
-    </script>
 </head>
 
 <body class="md:container mb-12 text-[#062573]">
-    <!-- header section -->
+
+    <!-- Header Section -->
     <header class="container mb-12">
         <nav>
             <div class="navbar bg-base-100">
@@ -79,7 +67,7 @@
                             <li><a>Home</a></li>
                             <li><a>Courses</a></li>
                             <li><a>About Us</a></li>
-                            <li><a href="{% url 'contactus'%}">Contact us</a></li>
+                            <li><a href="{% url 'contactus' %}">Contact us</a></li>
                             {% if user.is_authenticated %}
                             <li><a href="{% url 'logout' %}">Logout</a></li>
                             {% else %}
@@ -87,7 +75,7 @@
                             {% endif %}
                         </ul>
                     </div>
-                    <a href="{% url 'index' %}" class="btn btn-ghost text-3xl font-bold">Brain Boost</a>
+                    <a href="{% url 'index' %}" class="btn btn-ghost text-4xl font-bold">Brain Boost</a>
                 </div>
                 <div class="navbar-end hidden lg:flex">
                     <ul class="menu menu-horizontal px-1 text-lg">
@@ -104,28 +92,26 @@
                 </div>
             </div>
         </nav>
-        <div class="bg-cover bg-center font banner">
+        <div class="bg-cover bg-center font banner text-white">
             {% if user.is_authenticated %}
             <p style="float: right; margin-top: 20px; margin-right: 30px;"><b>Hello {{user.username}}!</b></p>
             {% endif %}
-            <h1 class="text-8xl py-60 font-bold">
-                Be the next coder <br> with us
-            </h1>
+            <h1 class="text-6xl md:text-8xl py-32 md:py-60 font-bold text-center">Be the next coder <br> with us</h1>
         </div>
     </header>
 
-    <!-- main section -->
+    <!-- Main Section -->
     <main>
-        <!-- courses section -->
-        <h2 class="text-4xl text-center font-bold">Courses</h2>
-        <section class="grid grid-cols-1 md:grid-cols-3 py-32 " style="margin-left: 60px;">
-            <!-- web dev -->
-            <div class="card bg-base-100 w-96 shadow-xl mb-12">
+        <!-- Courses Section -->
+        <h2 class="text-5xl text-center font-bold my-16">Courses</h2>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-16 py-16 mx-8">
+            <!-- Web Dev -->
+            <div class="card bg-base-100 w-full shadow-xl mb-12">
                 <figure>
                     <img src="{% static 'images/web-dev.jpeg' %}" alt="web dev" />
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title font-bold">Web Development{{course.title}}</h2>
+                    <h2 class="card-title font-bold">Web Development {{course.title}}</h2>
                     {% if user.is_authenticated %}
                     <a href="{% url 'payment' %}">
                         <!-- Redirect to payment page if authenticated -->
@@ -139,49 +125,47 @@
                     {% endif %}
                 </div>
             </div>
-
-            <!-- other cards follow similar structure as above -->
+            <!-- Other cards follow similar structure -->
         </section>
     </main>
-    <h2 class="text-4xl text-center mb-12 font-bold">Our mentors</h2>
-    <section class="grid grid-cols-1 md:grid-cols-3 bg-[#062573] mb-12 p-16">
-        <div class="card bg-base-100 w-96 shadow-xl">
 
+    <!-- Mentors Section -->
+    <h2 class="text-5xl text-center mb-16 font-bold">Our Mentors</h2>
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-12 bg-[#062573] p-16 text-white">
+        <div class="card bg-base-100 w-full shadow-xl">
             <figure>
                 <img src="{% static 'images/person-1.jpeg' %}" alt="person-1" />
             </figure>
             <div class="card-body">
                 <a href="payment.html">
-                    <h2 class="card-title font-bold">Web Development</h2>
+                    <h2 class="card-title font-bold text-[#062573]">Web Development</h2>
                 </a>
             </div>
         </div>
 
-        <div class="card bg-base-100 w-96 shadow-xl">
-
+        <div class="card bg-base-100 w-full shadow-xl">
             <figure>
-                <img src="{% static 'images/person-2.jpeg' %}" alt="person-1" />
+                <img src="{% static 'images/person-2.jpeg' %}" alt="person-2" />
             </figure>
             <div class="card-body">
-                <h2 class="card-title font-bold">Python</h2>
+                <h2 class="card-title font-bold text-[#062573]">Python</h2>
             </div>
         </div>
 
-        <div class="card bg-base-100 w-96 shadow-xl">
-
+        <div class="card bg-base-100 w-full shadow-xl">
             <figure>
-                <img src="{% static 'images/person-3.jpeg' %}" alt="person-1" />
+                <img src="{% static 'images/person-3.jpeg' %}" alt="person-3" />
             </figure>
             <div class="card-body">
                 <a href="payment.html">
-                    <h2 class="card-title font-bold">Game Development</h2>
+                    <h2 class="card-title font-bold text-[#062573]">Game Development</h2>
                 </a>
             </div>
         </div>
     </section>
-    <h2 class="text-4xl text-center font-bold mb-12">FAQ</h2>
 
-    <!-- faq section -->
+    <!-- FAQ Section -->
+    <h2 class="text-5xl text-center font-bold mb-16">FAQ</h2>
     <section class="mb-12 p-16">
         <div class="join join-vertical w-full">
             <div class="collapse collapse-arrow join-item border-base-300 border">
@@ -208,13 +192,5 @@
         </div>
     </section>
 </body>
-
-<footer class="footer footer-center bg-[#062573] text-neutral-content p-10">
-    <aside>
-        <p class="mb-8">CodeKid Bangladesh leads in teaching coding to children with an engaging, interactive platform. Our expert instructors make learning fun through creative projects and problem-solving, building essential tech skills and confidence. We're dedicated
-            to unlocking every child’s potential and fostering a passion for technology. Shape the future with us!</p>
-        <p>All rights are reserved @2024</p>
-    </aside>
-</footer>
 
 </html>
