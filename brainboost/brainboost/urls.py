@@ -23,8 +23,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', views.homeview, name = 'index'),
-    path('', views.index, name = 'index'),
+    path('', views.homeview, name = 'index'),
+    #path('', views.index, name = 'index'),
     path('signup/', views.signupview, name = 'signup'),
     path('login/', views.login, name = 'login'),
     path('parentssignin/', views.parentssignin, name='parentslogin'),

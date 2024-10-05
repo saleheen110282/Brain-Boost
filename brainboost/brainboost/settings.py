@@ -56,7 +56,7 @@ ROOT_URLCONF = 'brainboost.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'reactapp/build/')],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,7 +132,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Define directories for your static files (images, CSS, JS, etc.)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'reactapp/build/static/'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
