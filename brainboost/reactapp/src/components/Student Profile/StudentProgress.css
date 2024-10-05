@@ -1,0 +1,62 @@
+.student-progress-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #062573;
+    margin-bottom: 20px;
+}
+
+.progress-item {
+    margin-bottom: 20px;
+}
+
+.progress-item h2 {
+    margin: 0;
+    color: #062573;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+    height: 25px; /* Height of the progress bar */
+}
+
+.progress {
+    background-color: #062573;
+    color: white;
+    text-align: center;
+    padding: 5px 0; /* Padding to center text in progress bar */
+    
+    border-radius: 5px;
+}
+.student-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    border-radius: 50%; /* Make it circular */
+    margin-right: 20px; /* Spacing between image and text */
+}
+
+.student-info h2 {
+    margin: 0;
+    color: #062573;
+}
+
+.student-info p {
+    margin: 5px 0;
+}
+
