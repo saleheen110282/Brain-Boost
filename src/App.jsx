@@ -17,6 +17,8 @@ import ParentsSignIn from "./components/ParentsSignIn";
 import ParentsSignUp from "./components/ParentsSignUp";
 import CoursePage from "./components/CoursePage/CoursePage_1"
 import StudentProfile from "./components/Student Profile/StudentProfile"
+import StudentProgress from "./components/Student Profile/StudentProgress"
+import Quiz from "./components/Quiz/Quiz"
 
 
 const App = () => {
@@ -45,12 +47,14 @@ const App = () => {
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/StudentProfile" element={<StudentProfile />} />
+                    <Route path="/StudentProgress" element={<StudentProgress />} />
                     <Route path="/payment" element={<Payment />} />
                     <Route path="/Courses" element={<Courses />} />
                     <Route path="/CoursePage" element={<CoursePage />} />
                     <Route path="/contact" element={<ContactUs />} />
                     <Route path="/ParentsSignIn" element={<ParentsSignIn />} />
                     <Route path="/ParentsSignUp" element={<ParentsSignUp />} />
+                    <Route path="/Quiz" element={<Quiz />} />
                 </Routes>
             </main>
         </Router>
