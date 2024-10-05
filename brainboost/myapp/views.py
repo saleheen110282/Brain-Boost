@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from .models import Courses,Contact,Parent, Quiz, Question, Answer
 # Create your views here.
 
+def index(request):
+    return render(request,'index.html')
+
 def homeview(request):
     username = request.session.get('username')
     user_id = request.session.get('user_id')
