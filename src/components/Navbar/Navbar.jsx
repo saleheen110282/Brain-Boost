@@ -22,7 +22,7 @@ const NavbarMenu = [
   {
     id: 4,
     title: "Parents Portal",
-    path: "/parents-portal", // Path for Parents Portal
+    path: "/ParentsSignIn", // Path for Parents Portal
   },
   {
     id: 5,
@@ -41,7 +41,9 @@ const Navbar = () => {
       >
         {/* Logo section */}
         <div>
-          <h1 className="font-bold text-2xl">BrainBoost</h1>
+          <Link to="/" className="font-bold text-2xl"> {/* Wrap the logo with Link */}
+            BrainBoost
+          </Link>
         </div>
         {/* Menu section */}
         <div className="hidden lg:block">

@@ -7,7 +7,6 @@ import { RiComputerLine } from "react-icons/ri";
 import { TbWorldWww } from "react-icons/tb";
 import Lecture from "./Lecture";
 
-
 const Services = () => {
     return (
         <section className="bg-white"

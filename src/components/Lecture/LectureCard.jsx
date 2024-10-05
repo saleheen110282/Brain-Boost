@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 /* eslint-disable react/prop-types */
 const LectureCard = ({
@@ -21,13 +22,15 @@ const LectureCard = ({
     };
 
     return (
-        <motion.div
+        <Link to="/CoursePage" className="block"> {/* Make the entire card clickable */}
+            <motion.div
             className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
             variants={cardVariants}
             initial="hidden"
             animate="visible"
             whileHover="hover"
         >
+            
             <motion.img
                 src={image}
                 alt={title}
@@ -62,7 +65,9 @@ const LectureCard = ({
                     Enroll Now
                 </motion.button>
             </div>
+            
         </motion.div>
+        </Link>
     );
 };
 
