@@ -130,7 +130,7 @@ def payment(request):
         course = get_object_or_404(Courses, title=course_name)
         course_id = course.id
 
-        return redirect('course', course_id=course_id, item_id=1)
+        return redirect('course', course_id=course_id, item_id=0)
 
     return render(request, 'payment.html')
 
