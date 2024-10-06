@@ -14,11 +14,11 @@
         body {
             margin: 0;
         }
-        
+
         a {
             text-decoration: none;
         }
-        
+
         header {
             height: 60px;
             display: flex;
@@ -28,11 +28,11 @@
             margin-right: 15px;
             color: #062573;
         }
-        
+
         h2 {
             text-wrap: nowrap;
         }
-        
+
         header {
     background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
     display: flex;
@@ -89,26 +89,26 @@ header  ul li a {
             height: 600;
             width: 100%;
         }
-        
+
         .course-outline {
             height: 500px;
             width: 30%;
             background-color: #062573;
         }
-        
+
         .course-container {
             height: 550px;
             width: 70%;
             background-color: white;
             padding-left: 8%;
         }
-        
+
         .course-item {
             width: 100%;
             border: 1px solid white;
 
         }
-        
+
         .course-outline p {
             color: white;
             overflow: hidden;
@@ -126,34 +126,27 @@ header  ul li a {
     </style>
     <section>
         <div class="course-outline">
-            <div class="course-item">
-                <p>Video 1: Introduction to Web Development</p>
-            </div>
-            <div class="course-item">
-                <p>Video 1: Introduction to Web Development</p>
-            </div>
-            <div class="course-item">
-                <p><a href="{% url 'quiz' %}">Quiz 1</a></p>
-            </div>
-            <div class="course-item">
-                <p>Video 1: Introduction to Web Development</p>
-            </div>
-            <div class="course-item">
-                <p><a href="{% url 'quiz' %}">Quiz 2</a></p>
-            </div>
-            <div class="course-item">
-                <p>Video 1: Introduction to Web Development</p>
-            </div>
-            <div class="course-item"></div>
-                <p><a href="{% url 'projectpage' %}">Project 1: Webpage using HTML and CSS </a></p>
-            </div>
-        </div>
+    {% for item in items %}
+    <div class="course-item">
+        {% if item.content_type == 'video' %}
+            <p>{{ item.title }}</p>
+
+        {% elif item.content_type == 'quiz' %}
+            <p><a href="{% url 'quiz' %}">{{ item.title }}</a></p>
+        {% elif item.content_type == 'project' %}
+            <p><a href="{% url 'projectpage'%}">{{ item.title }}</a></p>
+        {% else %}
+            <p>Unknown content type.</p>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
         <style>
             .video-frame video {
                 height: 80%;
                 width: 90%;
             }
-            
+
             .course-button {
                 height: 80px;
                 width: 100%;
@@ -161,7 +154,7 @@ header  ul li a {
                 justify-content: end;
                 align-items: center;
             }
-            
+
             .course-button button {
                 height: 40px;
                 width: 100px;
@@ -179,12 +172,11 @@ header  ul li a {
             }
         </style>
         <div class="course-container">
-            <h2>{{current_item}}</h2>
+            <h2>{{current_item.title}}</h2>
             <div class="video-frame">
-                <video controls>
-                    <source src="your-video-file.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ current_item.content_url|slice:"://www.youtube.com/watch?v=" }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
             </div>
             <div class="course-button">
                 <form method="GET" action="{% if item_id > 0 %}{% url 'course' item_id=item_id|add:-1 %}{% endif %}">

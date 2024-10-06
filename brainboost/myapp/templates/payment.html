@@ -41,7 +41,12 @@
                 <span>2000 Taka</span>
             </div>
 
-            <button type="submit" class="btn-submit">Make Payment</button>
+<div class="text-center"> <!-- This div centers the content -->
+    <a href="{% url 'course' 1 %}" class="btn-submit" style="text-decoration: none; display: inline-block;">
+        Make Payment
+    </a>
+</div>
+
         </form>
     </section>
 </body>

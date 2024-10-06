@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Courses, Students,Contact,Parent, Quiz, Question, Answer
+from .models import *
 from django.contrib import admin
 @admin.register(Courses)
 class CourseModelAdmin(admin.ModelAdmin):
@@ -12,9 +12,9 @@ class StudentModelAdmin(admin.ModelAdmin):  # Fixed typo: Admn to Admin
 
 admin.site.register(Contact)
 admin.site.register(Parent)
-
-
-
+admin.site.register(Mentor)
+admin.site.register(FAQ)
+admin.site.register(CourseContent)
 class AnswerInline(admin.TabularInline):
     model = Answer
     extra = 3
@@ -28,3 +28,4 @@ class QuizAdmin(admin.ModelAdmin):
 
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Question, QuestionAdmin)
+

@@ -1,26 +1,41 @@
 from django.shortcuts import render, redirect, HttpResponse,  get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
-from .models import Courses,Contact,Parent, Quiz, Question, Answer
+from .models import Courses, Contact, Parent, Quiz, Question, Answer, FAQ
+
+
 # Create your views here.
 
 def index(request):
     return render(request,'index.html')
 
+from django.shortcuts import render
+from .models import Mentor  # Import the Mentor model
+
+from django.shortcuts import render
+from .models import Mentor, Courses  # Import Mentor and Courses models
+
 def homeview(request):
     username = request.session.get('username')
     user_id = request.session.get('user_id')
-    
-    # Optionally, you can fetch more data from the database using the user_id
-    
-    # Pass session data to the template
+
+    # Fetch mentors, courses, and FAQs from the database
+    mentors = Mentor.objects.all()
+    courses = Courses.objects.all()
+    faqs = FAQ.objects.all()  # Fetch FAQs
+
+    # Pass session data, mentor data, course data, and FAQ data to the template
     context = {
         'username': username,
-        'user_id': user_id
-    } 
+        'user_id': user_id,
+        'mentors': mentors,
+        'courses': courses,
+        'faqs': faqs  # Add FAQs to context
+    }
 
-    
-    return render(request, 'index.html')
+    return render(request, 'index.html', context)
+
+
 
 def signupview(request):
     if request.method == 'POST':
@@ -153,52 +168,31 @@ def quiz_view(request):
 def quizresult(request):
     return render(request, 'quiz_result.html')
 
-def course_page_view1(request):
-    items = [
-        "Video 1: Introduction to Web Development",
-        "Video 2: Introduction to HTML",
-        "Quiz 1",
-        "Video 3: Introduction to CSS",
-        "Quiz 2",
-        "Video 4: Introduction to Javascript",
-        "Project 1: Webpage using HTML and CSS"
-    ]
-    item_id=0
+
+def course_page_view(request, item_id):
+    course_id=1
+    course = get_object_or_404(Courses, id=course_id)
+    items = list(course.contents.all())
+
+    # Adjust item_id to be within bounds
     if item_id < 0:
-        item_id=0
+        item_id = 0
+    elif item_id >= len(items):  # Handle out-of-bounds index
+        item_id = len(items) - 1
+
     current_item = items[item_id]
+
+    if current_item.content_type == 'quiz':
+        return redirect('quiz')  # Adjust as needed
 
     return render(request, 'Coursepage.html', {
         'current_item': current_item,
         'item_id': item_id,
         'items': items,
-        'max': len(items)-1,
+        'max': len(items) - 1,
+        'course': course,
     })
-def course_page_view(request,item_id):
-    items = [
-        "Video 1: Introduction to Web Development",
-        "Video 2: Introduction to HTML",
-        "Quiz 1",
-        "Video 3: Introduction to CSS",
-        "Quiz 2",
-        "Video 4: Introduction to Javascript",
-        "Project 1: Webpage using HTML and CSS"
-    ]
 
-    if item_id < 0:
-        item_id=0
-    current_item = items[item_id]
-
-    if "Quiz" in current_item:
-        # Redirect to the quiz page (modify the URL or view name as necessary)
-        return redirect('quiz')
-
-    return render(request, 'Coursepage.html', {
-        'current_item': current_item,
-        'item_id': item_id,
-        'items': items,
-        'max': len(items)-1,
-    })
 
 def projectpage(request):
     return render(request, 'projectpage.html')

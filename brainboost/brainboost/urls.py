@@ -36,10 +36,11 @@ urlpatterns = [
     path('success/', views.success, name='success'),
     path('quiz/', views.quiz_view, name='quiz'),
     path('course/<int:item_id>/', views.course_page_view, name='course'),
-    path('course/', views.course_page_view1, name='course1'),
+    # path('course/<int:item_id>/', views.course_page_view, name='course'),
+    # path('course/', views.course_page_view1, name='course1'),
     path('projectpage/', views.projectpage, name='projectpage'),
     path('quizresult/', views.quizresult, name='quizresult'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
