@@ -30,24 +30,20 @@
     <section class="payment-section">
         <h1>Payment</h1>
         <form class="payment-form" method="POST">
-            {% csrf_token %}
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <input type="text" placeholder="Course Name" required>
-            <textarea placeholder="Billing Address" rows="4" required></textarea>
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="course_name" placeholder="Course Name" required>
+    <textarea name="billing_address" placeholder="Billing Address" rows="4" required></textarea>
 
-            <div class="total-amount">
-                <span>Total Amount : </span>
-                <span>2000 Taka</span>
-            </div>
+    <div class="total-amount">
+        <span>Total Amount : </span>
+        <span>2000 Taka</span>
+    </div>
 
-<div class="text-center"> <!-- This div centers the content -->
-    <a href="{% url 'course' 1 %}" class="btn-submit" style="text-decoration: none; display: inline-block;">
-        Make Payment
-    </a>
-</div>
+    <button type="submit" style="height: 40px; background-color: #062573; color: white;">Payment</button>
+</form>
 
-        </form>
     </section>
 </body>
 </html>

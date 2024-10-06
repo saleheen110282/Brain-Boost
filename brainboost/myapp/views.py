@@ -122,9 +122,16 @@ def contactus(request):
 
     return render(request, 'contact.html')
 
+
 def payment(request):
     if request.method == 'POST':
-        return redirect('course1')
+        course_name = request.POST.get('course_name')
+        print("Course Name Submitted:", course_name)  # Debugging
+        course = get_object_or_404(Courses, title=course_name)
+        course_id = course.id
+
+        return redirect('course', course_id=course_id, item_id=1)
+
     return render(request, 'payment.html')
 
 def success(request):
@@ -158,6 +165,7 @@ def quiz_view(request):
             'score': score,
             'total_questions': total_questions,
             'percentage_score': percentage_score,
+
         })
 
 
@@ -169,8 +177,8 @@ def quizresult(request):
     return render(request, 'quiz_result.html')
 
 
-def course_page_view(request, item_id):
-    course_id=1
+def course_page_view(request,course_id,item_id):
+
     course = get_object_or_404(Courses, id=course_id)
     items = list(course.contents.all())
 
@@ -191,6 +199,7 @@ def course_page_view(request, item_id):
         'items': items,
         'max': len(items) - 1,
         'course': course,
+        'course_id': course_id
     })
 
 

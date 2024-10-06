@@ -178,11 +178,12 @@ header  ul li a {
 
 
             </div>
+            <h1></h1>
             <div class="course-button">
-                <form method="GET" action="{% if item_id > 0 %}{% url 'course' item_id=item_id|add:-1 %}{% endif %}">
+                <form method="GET" action="{% if item_id > 0 %}{% url 'course' course_id=course.id item_id=item_id|add:-1 %}{% endif %}">
                 <button type="submit" {% if item_id == 0 %}disabled{% endif %}>Previous</button>
             </form>
-            <form method="GET" action="{% url 'course' item_id=item_id|add:1 %}">
+            <form method="GET" action="{% url 'course' course_id=course.id item_id=item_id|add:1 %}">
                 <button type="submit" {% if item_id == max %}disabled{% endif %}>Next</button>
             </form>
             </div>
