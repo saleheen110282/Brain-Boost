@@ -12,13 +12,17 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">Brain Boost</div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Log in</a></li>
+        <div class="logo"><a href="{% url 'index' %}" style="color: white; text-decoration: none;">Brain Boost</a></div>
+        <ul class="menu menu-horizontal px-1 text-lg">
+            <li><a href="{% url 'index'%}">Home</a></li>
+            <li><a href="{% url 'parentslogin' %}">Parents Portals</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li><a href="{% url 'contactus' %}">Contact us</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 
@@ -27,8 +31,8 @@
         <h2>Contact Us</h2>
         <form class="contact-form" method="POST" action="{% url 'contactus' %}">
         {% csrf_token %}
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="name" placeholder="Name" value="{{user.username}}" disabled>
+        <input type="email" name="email" placeholder="Email" value="{{user.email}}" disabled>
         <input type="tel" name="mobile" placeholder="Mobile Number" required>
         <textarea name="message" placeholder="Message" rows="5" required></textarea>
         <button type="submit" class="btn-submit">Send</button>

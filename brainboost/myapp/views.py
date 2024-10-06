@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponse,  get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
-from .models import Courses, Contact, Parent, Quiz, Question, Answer, FAQ
+from .models import *
 
 
 # Create your views here.
 
-def index(request):
-    return render(request,'index.html')
 
 from django.shortcuts import render
 from .models import Mentor  # Import the Mentor model
@@ -39,7 +37,7 @@ def homeview(request):
 
 def signupview(request):
     if request.method == 'POST':
-        username = request.POST.get('name')
+        username = request.POST.get('name').lower()
         email = request.POST.get('email')
         password = request.POST.get('password')
         password2 = request.POST.get('confirm_password')
@@ -47,6 +45,8 @@ def signupview(request):
             return HttpResponse("Your password and confirm password are not same!")
         my_user = User.objects.create_user(username, email, password)
         my_user.save()
+        stduser = Students(username = username, email = email, password = password)
+        stduser.save()
         return redirect('login')
     
     return render(request, 'signup.html')
@@ -123,16 +123,17 @@ def contactus(request):
     return render(request, 'contact.html')
 
 
-def payment(request):
+def payment(request, course_title):
+    course = get_object_or_404(Courses, title = course_title.replace('-', ' '))
     if request.method == 'POST':
-        course_name = request.POST.get('course_name')
-        print("Course Name Submitted:", course_name)  # Debugging
+        course_name = request.POST.get('coursename')
+        print("Course Name Submitted:", course_name)  
         course = get_object_or_404(Courses, title=course_name)
         course_id = course.id
 
         return redirect('course', course_id=course_id, item_id=0)
 
-    return render(request, 'payment.html')
+    return render(request, 'payment.html', {'course': course})
 
 def success(request):
     return render(request, 'success.html')

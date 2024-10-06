@@ -117,7 +117,7 @@
             <p>{{ course.description }}</p>  <!-- Display description -->
 
             {% if user.is_authenticated %}
-            <a href="{% url 'payment' %}">
+            <a href="{% url 'payment' course.title|slugify %}">
                 <button class="btn btn-primary bg-[#062573]">Enroll Now</button>
             </a>
             {% else %}

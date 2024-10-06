@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <h2>Brain Boost</h2>
+            <h2><a href="{% url 'index' %}" style="color: #001d5a; text-decoration: none;">Brain Boost</a></h2>
         </div>
         <nav>
             <ul>
@@ -30,19 +30,19 @@
     <section class="payment-section">
         <h1>Payment</h1>
         <form class="payment-form" method="POST">
-    {% csrf_token %}
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="text" name="course_name" placeholder="Course Name" required>
-    <textarea name="billing_address" placeholder="Billing Address" rows="4" required></textarea>
+            {% csrf_token %}
+            <input type="text" placeholder="Name" value="{{user.username}}" disabled>
+            <input type="email" placeholder="Email" value="{{user.email}}" disabled>
+            <input type="text" placeholder="Course Name" name="coursename" value="{{course.title}}" required>
+            <textarea placeholder="Billing Address" rows="4" required></textarea>
 
-    <div class="total-amount">
-        <span>Total Amount : </span>
-        <span>2000 Taka</span>
-    </div>
+            <div class="total-amount">
+                <span>Total Amount : </span>
+                <span>{{course.price}} Taka</span>
+            </div>
 
-    <button type="submit" style="height: 40px; background-color: #062573; color: white;">Payment</button>
-</form>
+            <button type="submit" class="btn-submit">Make Payment</button>
+        </form>
 
     </section>
 </body>
