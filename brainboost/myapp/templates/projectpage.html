@@ -7,6 +7,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brain Boost - Quiz</title>
     <link rel="stylesheet" href="{% static 'projectpage.css' %}">
+    <style>
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 600;
+            width: 100%;
+        }
+        
+        .course-outline {
+            height: 500px;
+            width: 30%;
+            background-color: #062573;
+        }
+        
+        .course-container {
+            height: 550px;
+            width: 70%;
+            background-color: white;
+            padding-left: 8%;
+        }
+        
+        .course-item {
+            width: 100%;
+            border: 1px solid white;
+            padding: 20px;
+
+        }
+        
+        .course-outline p {
+            color: white;
+            overflow: hidden;
+            margin-left: 10px;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+        .course-outline a:visited {
+            color: white;
+            overflow: hidden;
+            margin-left: 10px;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,28 +58,42 @@
             <h2>Brain Boost</h2>
         </div>
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Log in</a></li>
+            <ul class="menu menu-horizontal px-1 text-lg">
+                <li><a href="{% url 'index'%}">Home</a></li>
+                <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                <li><a href="{% url 'contactus' %}">Contact us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <aside class="sidebar">
-            <ul>
-                <li><a href="#">Video 1: Introduction to Web Development</a></li>
-                <li><a href="#">Quiz 1</a></li>
-                <li><a href="#">Video 2: HTML Basics</a></li>
-                <li><a href="#">Quiz 2</a></li>
-                <li><a href="#">Video 3: CSS Fundamentals</a></li>
-                <li><a href="#">Quiz 3</a></li>
-                <!-- Add more items as needed -->
-            </ul>
-        </aside>
+            <div class="course-outline">
+                <div class="course-item">
+                    <p>Video 1: Introduction to Web Development</p>
+                </div>
+                <div class="course-item">
+                    <p>Video 1: Introduction to Web Development</p>
+                </div>
+                <div class="course-item">
+                    <p><a href="{% url 'quiz' %}">Quiz 1</a></p>
+                </div>
+                <div class="course-item">
+                    <p>Video 1: Introduction to Web Development</p>
+                </div>
+                <div class="course-item">
+                    <p><a href="{% url 'quiz' %}">Quiz 2</a></p>
+                </div>
+                <div class="course-item">
+                    <p>Video 1: Introduction to Web Development</p>
+                </div>
+                <div class="course-item"></div>
+                    <p><a href="{% url 'projectpage' %}">Project 1: Webpage using HTML and CSS </a></p>
+                </div>
 
         <main class="content">
             <h1>Quiz 1: Frontend Development</h1>
@@ -50,8 +108,7 @@
             </textarea>
             <div class="buttons">
                 <button type="submit">Submit</button>
-                <button>Previous</button>
-                <button>Next</button>
+                <!-- <button><a href="#" style="text-decoration: none; color: white;">Finish</a></button> -->
             </div>
         </form>
         </main>

@@ -33,16 +33,33 @@
             text-wrap: nowrap;
         }
         
-        .nav-items {
-            list-style: none;
-            display: flex;
-            min-width: 400px;
-            max-width: 400px;
-            align-items: center;
-            justify-content: space-around;
-            font-weight: 600;
-        }
-        
+        header {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h2 {
+    color: #003399;
+}
+
+header  ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header  ul li {
+    margin-left: 20px;
+}
+
+header  ul li a {
+    text-decoration: none;
+    color: #003399;
+    font-weight: bold;
+}
         h1 {
             color: #062573;
             font-weight: 900;
@@ -51,14 +68,17 @@
         }
     </style>
     <header>
-        <h2><a href="homepage.html">Brain Boost</a></h2>
+        <h2><a href="{% url 'index' %}">Brain Boost</a></h2>
 
-        <ul class="nav-items">
-            <li><a href="Homepage.html">Home</a></li>
-            <li>Courses</li>
-            <li><a href="About us.html">About Us</a></li>
-            <li>Contact us</li>
-            <li>Login</li>
+        <ul class="menu menu-horizontal px-1 text-lg">
+            <li><a href="{% url 'index'%}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li><a href="{% url 'contactus' %}">Contact us</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
     </header>
     <style>
