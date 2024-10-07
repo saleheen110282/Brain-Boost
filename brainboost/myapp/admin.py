@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import *
-from django.contrib import admin
 @admin.register(Courses)
 class CourseModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'price', 'image', 'description']
@@ -15,6 +14,18 @@ admin.site.register(Parent)
 admin.site.register(Mentor)
 admin.site.register(FAQ)
 admin.site.register(CourseContent)
+
+@admin.register(Enrollment)
+class Enrollment(admin.ModelAdmin):
+    list_display = ['username', 'course', 'point', 'is_completed']
+@admin.register(Projectsubmission)
+class Projectsubmission(admin.ModelAdmin):
+    list_display = ['username', 'course', 'title', 'description', 'code', 'number']
+
+
+
+
+
 class AnswerInline(admin.TabularInline):
     model = Answer
     extra = 3

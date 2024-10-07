@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Boost - Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e73be;
+            padding: 1rem 2rem;
+            color: white;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+        }
+
+        .navbar nav ul li {
+            display: inline;
+        }
+
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h2 {
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 2rem;
+            color: #333;
+        }
+
+        /* Courses Section */
+        .courses {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .course {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            padding: 1rem;
+            width: 250px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .course-button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #1e73be;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .course-button:hover {
+            background-color: #155a9b;
+        }
+
+        .completed {
+            background-color: #4caf50;
+        }
+
+        .completed:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <h1><a href="{% url 'index' %}" style="color: white; text-decoration: none;">Brain Boost</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                    <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="child.jpg.png" alt="Child's Profile Picture" class="profile-img">
+            <h2>{{user.username}}</h2>
+            <p>Student Unique ID: 21232</p>
+        </div>
+
+        <!-- Enrolled Courses Section -->
+        <h3>Enrolled Courses</h3>
+        <div class="courses">
+            <div class="course">
+                <img src="web-development.png" alt="Web Development" class="course-img">
+                <a href="{% url 'progressanalysis' %}"><button class="course-button">Continue</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

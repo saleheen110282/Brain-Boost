@@ -31,8 +31,8 @@
         <h1>Payment</h1>
         <form class="payment-form" method="POST">
             {% csrf_token %}
-            <input type="text" placeholder="Name" value="{{user.username}}" disabled>
-            <input type="email" placeholder="Email" value="{{user.email}}" disabled>
+            <input type="text" placeholder="Name" value="{{user.username}}" name = "username" required>
+            <input type="email" placeholder="Email" value="{{user.email}}" name="email" required>
             <input type="text" placeholder="Course Name" name="coursename" value="{{course.title}}" required>
             <textarea placeholder="Billing Address" rows="4" required></textarea>
 

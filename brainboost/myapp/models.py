@@ -3,6 +3,17 @@ from django.db import models
 
 # Create your models here.
 
+class Students(models.Model):
+    username = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='students')
+    email = models.EmailField(default='user@gmail.com')
+    password = models.CharField(max_length=50,default='password123')
+    mobile = models.CharField(max_length=15, default='0000000000')
+
+    def __str__(self):
+        return self.username
+
+
 class Courses(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
@@ -20,6 +31,23 @@ class CourseContent(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Enrollment(models.Model):
+    username = models.CharField(max_length=255)
+    course = models.CharField(max_length=255)
+    point = models.IntegerField(default=0)
+    is_completed = models.CharField(max_length=255, default='continue')
+
+class Projectsubmission(models.Model):
+    username = models.CharField(max_length=255)
+    course = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    code = models.TextField(max_length=10000)
+    number = models.IntegerField(default = 0)
+
+
 class FAQ(models.Model):
     question = models.CharField(max_length=255)
     answer = models.TextField()
@@ -36,15 +64,6 @@ class Mentor(models.Model):
         return self.name
 
 
-class Students(models.Model):
-    username = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='students')
-    email = models.EmailField(default='user@gmail.com')
-    password = models.CharField(max_length=50,default='password123')
-    mobile = models.CharField(max_length=15, default='0000000000')
-
-    def __str__(self):
-        return self.username
 
 
 class Contact(models.Model):

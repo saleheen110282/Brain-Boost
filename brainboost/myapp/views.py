@@ -58,7 +58,12 @@ def login(request):
         user = authenticate(request, username = username, password = password)
         if user is not None:
             auth_login(request, user)
-            request.session['username'] = user.username
+            student = Students.objects.get(username = username)
+            request.session['id'] = student.id
+            request.session['username'] = student.username
+            request.session['email'] = student.email
+            
+            print(request.session['id'],request.session['username'], request.session['email'])
             return redirect('index')
         else:
             return HttpResponse('Authentication Failed!')
@@ -82,7 +87,7 @@ def parentssignin(request):
             parent = Parent.objects.get(email=email)
             print(email.lower(),password,": ",parent.email,parent.password)
             if parent.password == password:
-                return redirect('index')
+                return redirect('parentprofile')
             else:
                 error_message = "Invalid username or password."
         except Parent.DoesNotExist:
@@ -105,6 +110,15 @@ def parentssignup(request):
 
     return render(request, 'parentsignup.html')
 
+def parenprofile(request):
+    return render(request, 'parent_profile.html')
+
+def child(request):
+    return render(request, 'Child.html')
+
+def progressanalysis(request):
+    return render(request, 'progressanalysis.html')
+
 def aboutus(request):
     return render(request, 'About us.html')
 
@@ -126,9 +140,13 @@ def contactus(request):
 def payment(request, course_title):
     course = get_object_or_404(Courses, title = course_title.replace('-', ' '))
     if request.method == 'POST':
-        course_name = request.POST.get('coursename')
-        print("Course Name Submitted:", course_name)  
-        course = get_object_or_404(Courses, title=course_name)
+        username = request.POST.get('username')
+        course = request.POST.get('coursename')
+        enroll = Enrollment(username = username, course = course)
+        enroll.save()
+        #print("Course Name Submitted:", course_name)  
+        request.session['course'] = course
+        course = get_object_or_404(Courses, title=course)
         course_id = course.id
 
         return redirect('course', course_id=course_id, item_id=0)
@@ -160,6 +178,16 @@ def quiz_view(request):
 
         # Calculate percentage or points if necessary
         percentage_score = (score / total_questions) * 100 if total_questions else 0
+
+        # stdusername = User.username
+
+
+        # student = Enrollment.objects.get(username = stdusername, course = request.session['course'])
+        # student.point = student.point + score 
+
+        # student = Enrollment(point = student.point)
+        # student.save()
+
 
         return render(request, 'quiz_result.html', {
             'quiz': quiz,
@@ -204,5 +232,5 @@ def course_page_view(request,course_id,item_id):
     })
 
 
-def projectpage(request):
+def projectpage(request):   
     return render(request, 'projectpage.html')
